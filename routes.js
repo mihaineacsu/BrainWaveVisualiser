@@ -11,6 +11,7 @@ router.get('/', function (req, res) {
 	res.send('Hello, World!');
 });
 
+// router.get('/wave/:userName/:waveType/:waveIndex', function(req, res) {
 router.get('/test', function(req, res) {
 	fs.readFile(path.join(WaveDataAngryFolder, '1468426383051.beta0'),
 				'utf8', function(err, contents) {
