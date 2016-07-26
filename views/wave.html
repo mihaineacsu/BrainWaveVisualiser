@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.js"></script>
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+    <meta charset="UTF-8">
+    <title>Wave</title>
+  </head>
+  <body>
+
+<div id="container" style="height: 400px"></div>
+	<script>
+		$(function () {
+			$('#container').highcharts({
+				chart: {
+					zoomType: 'x'
+				},
+				xAxis: {
+					type: 'datetime'
+				},
+				series: [{
+					data: {{contents}},
+					pointStart: Date.UTC(2010, 0, 1),
+					pointInterval: 100
+				}]
+			});
+		});
+	</script>
+  </body>
+</html>
