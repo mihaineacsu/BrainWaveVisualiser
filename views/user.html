@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.js"></script>
+<script src="https://code.highcharts.com/stock/highstock.js"></script>
+    <meta charset="UTF-8">
+    <title>Wave</title>
+  </head>
+  <body>
+Hello {{userName}}
+
+<a href="#" onclick="createChart(waveData.alpha, 'Alpha Waves');">Alpha</a>
+<a href="#" onclick="createChart(waveData.beta, 'Beta Waves');">Beta</a>
+<a href="#" onclick="createChart(waveData.delta, 'Delta Waves');">Delta</a>
+<a href="#" onclick="createChart(waveData.eeg, 'EEG Waves');">EEG</a>
+<a href="#" onclick="createChart(waveData.delta, 'Delta Waves');">Delta</a>
+<a href="#" onclick="createChart(waveData.theta, 'Theta Waves');">Theta</a>
+<div id="container" style="height: 400px"></div>
+
+	<script>
+	var chart;
+
+	function createChart(data, title) {
+		var dataWithTimeframe = data.slice(0).concat(waveData.timestamps);
+		$('#container').highcharts('StockChart', {
+			rangeSelector : {
+				selected : 1
+			},
+
+			title : {
+				text : title
+			},
+			rangeSelector:{
+		        enabled:false
+		    },
+		    xAxis:{
+		    	range: 20*10000
+		    },
+
+			series : dataWithTimeframe
+		});
+	}
+
+	var waveData;
+			$.get("/test/waves/{{userName}}", function(stuff, status){
+				waveData = stuff;
+
+				createChart(waveData.alpha, "Alpha waves");
+	});
+
+
+	</script>
+  </body>
+</html>

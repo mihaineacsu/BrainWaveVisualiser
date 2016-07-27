@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Wave</title>
+  </head>
+  <body>
+  	<div id="container" style="height: 400px"></div>
+  	<ul>
+    	{{#users}}
+    		<li><a href="user/{{.}}">{{.}}</a></li>
+    	{{/users}}
+	</ul>
+  </body>
+</html>
